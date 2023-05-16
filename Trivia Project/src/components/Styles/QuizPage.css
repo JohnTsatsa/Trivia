@@ -1,0 +1,92 @@
+.quiz-card {
+    text-align: center;
+    position: relative;
+    padding: clamp(12px, 10vw, 120px) clamp(10px, 10vw, 100px);
+    min-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.quiz-card::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 15, 15, 0.596);
+    z-index: -1;
+}
+
+.question {
+    color: white;
+    font-size: clamp(20px, 3.5vw, 30px);
+    margin-bottom: clamp(50px, 10vw, 100px);
+    font-weight: 500;
+}
+
+.answers-section {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: clamp(30px, 6.5vw, 60px);
+    column-gap: 40px;
+}
+
+.answers-section>li {
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.822);
+    color: white;
+    font-size: clamp(13px, 2vw, 19px);
+    letter-spacing: 0.4px;
+    word-spacing: 1px;
+    padding: clamp(12px, 8%, 22px);
+    /* in case the answer is multiline */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.answers-section>li:hover {
+    border: 2px solid var(--purple);
+}
+
+.answer.correct {
+    background-color: rgb(3, 129, 3);
+    transition: 0.15s;
+}
+
+.answer.wrong {
+    background-color: rgb(197, 0, 0);
+    transition: 0.15s;
+}
+
+.answer.deactivate {
+    pointer-events: none;
+}
+
+/*? ==================     small screens    ==================== */
+@media screen and (max-width:450px) {
+    .quiz-card {
+        padding: 50px 14px 0 14px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .answers-section {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 20px;
+    }
+
+    .answers-section>li {
+        font-size: 15px;
+        padding: 18px;
+    }
+}

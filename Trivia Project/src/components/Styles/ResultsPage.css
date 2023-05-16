@@ -1,0 +1,81 @@
+.result-page {
+    text-align: center;
+    position: relative;
+    padding: clamp(60px, 5vw, 100px) clamp(8px, 3vw, 80px);
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.result-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 15, 15, 0.596);
+    z-index: -1;
+}
+
+.result-page>h1 {
+    color: white;
+    word-spacing: 1.5px;
+    text-shadow: 3px 3px 5px var(--purple);
+    font-size: clamp(28px, 5vw, 55px);
+}
+
+.result-page>h2 {
+    color: white;
+    margin-top: 40px;
+    font-size: clamp(15px, 2.5vw, 25px);
+    letter-spacing: 1.5px;
+    word-spacing: 1px;
+}
+
+.result-page button {
+    font-family: var(--shadowed-font);
+    font-size: 50px;
+    color: white;
+    margin-top: 150px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.result-page button:hover {
+    transform: scale(1.04);
+    text-shadow: -2px -2px 9px rgb(255, 103, 2);
+}
+
+.result-page button:active {
+    transform: scale(0.98);
+}
+
+/*? ===================      smaller screens     ========================= */
+@media screen and (max-width:450px) {
+    .result-page {
+        padding: 150px 5px 0 5px;
+    }
+
+    .result-page>h1 {
+        font-size: clamp(18px, 6vw, 25px);
+    }
+
+    .result-page>h2 {
+        padding: 0 35px;
+        margin-top: 15px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .result-page button {
+        font-size: 35px;
+        margin-top: 100px;
+    }
+
+}

@@ -1,0 +1,135 @@
+.header-section {
+    height: 100px;
+    transition: 0.5s;
+}
+
+/*?   =====================   the "Category" title  ====================   */
+.header-section h1 {
+    font-family: var(--shadowed-font);
+    text-align: center;
+    animation: expandTitle 0.6s forwards;
+}
+
+@keyframes expandTitle {
+    0% {
+        letter-spacing: -14.5px;
+    }
+
+    100% {
+        font-size: 50px;
+        letter-spacing: 11.2px;
+    }
+}
+
+/*?   =====================   the "Trivia" title  ====================   */
+.header-section.active {
+    background-image: url('https://i.pinimg.com/originals/49/3c/79/493c7960c33dc4b95ae0161872b9a865.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.header-section.active::before,
+.header-section.active::after {
+    content: "";
+    background-color: rgba(255, 255, 255, 0.911);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+}
+
+.header-section.active::after {
+    background-color: rgba(40, 2, 48, 0.603);
+}
+
+.header-section.active h1 {
+    animation: moveTitleUp 3s forwards;
+}
+
+@keyframes moveTitleUp {
+    0% {
+        font-size: 110px;
+        transform: translateY(-100%);
+    }
+
+    40% {
+        letter-spacing: 0px;
+        font-size: 120px;
+        transform: translateY(21vh);
+    }
+
+    90% {
+        letter-spacing: 0px;
+        font-size: 120px;
+        transform: translateY(21vh);
+    }
+
+    100% {
+        letter-spacing: -16px;
+        font-size: 30px;
+        transform: translateY(-10%);
+    }
+}
+
+.header-section.active span {
+    font-size: 40px;
+    width: 180px;
+    margin: -20px auto;
+    display: block;
+    animation: moveSpanUp 3s forwards;
+}
+
+@keyframes moveSpanUp {
+    90% {
+        letter-spacing: 0px;
+        transform: translateY(0%);
+    }
+
+    100% {
+        letter-spacing: -23px;
+        transform: translateY(55%);
+    }
+}
+
+/*? ==============   small screens   =================== */
+@media screen and (max-width:450px) {
+
+    .header-section {
+        height: 70px;
+    }
+
+    @keyframes moveTitleUp {
+
+
+        40% {
+            letter-spacing: 0px;
+            font-size: 100px;
+            transform: translateY(80%);
+        }
+
+        90% {
+            letter-spacing: 0px;
+            font-size: 100px;
+            transform: translateY(80%);
+        }
+
+        100% {
+            letter-spacing: -16px;
+            font-size: 30px;
+            transform: translateY(10%);
+        }
+    }
+
+    @keyframes expandTitle {
+        100% {
+            font-size: 2.3rem;
+            letter-spacing: 0.6rem;
+        }
+    }
+}

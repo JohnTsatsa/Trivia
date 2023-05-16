@@ -1,0 +1,225 @@
+.container {
+    margin-bottom: 50px;
+}
+
+/*? ===================  when category card is NOT expanded  ================== */
+.category-card {
+    /* it is for more smooth transition */
+    border: 3px solid rgba(232, 248, 6, 0);
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    width: 450px;
+    height: 250px;
+    border-radius: 20px;
+    /* usefull for small screen where we want to center the categories but not consider the hidden itmes part of the category */
+    overflow: hidden;
+    transition: width .3s, border .2s;
+}
+
+/*! ========================    left side of the card   =======================   */
+.category-card .category-card-left {
+    width: 100%;
+    transition: .4s;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.category-title {
+    font-family: 'Lilita One', cursive;
+    font-size: 28px;
+    color: var(--purple);
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: rgb(253, 253, 253);
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    transition: 0.4s;
+}
+
+/*! =====================    right side of the card   =============================   */
+.category-card-right {
+    background-color: rgba(39, 78, 78, 0.87);
+    text-align: center;
+    width: 0;
+    border-radius: 0 17px 17px 0;
+    /* disable the hidden button link so want expand the card when mouse is out of the card */
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.options-title {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.difficulty-options,
+.quantity-options {
+    list-style: none;
+    margin-top: 5px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.difficulty-option,
+.quantity-option {
+    padding: 3px 7px 3px 7px;
+    color: rgb(236, 162, 255);
+    cursor: pointer;
+}
+
+.difficulty-option:hover,
+.quantity-option:hover {
+    background-color: rgba(255, 145, 0, 0.589);
+    border-radius: 50%;
+    transition: background-color 0.18s
+}
+
+.difficulty-option.selected,
+.quantity-option.selected {
+    color: var(--purple);
+    font-weight: bold;
+    background-color: var(--orange);
+    border-radius: 50%;
+    transition: 0.15s;
+}
+
+.category-card .options-title,
+.category-card .quantity-options,
+.category-card .difficulty-options,
+.category-card .start-button {
+    opacity: 0;
+    transition: .15s;
+}
+
+.category-card-right button {
+    font-family: var(--shadowed-font);
+    font-weight: bold;
+    font-size: 38px;
+    background-color: transparent;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.category-card-right button:hover {
+    transform: scale(1.15);
+}
+
+.category-card-right button:active {
+    transform: scale(1)
+}
+
+
+/*? ==================  when the category card is expanded  =================  */
+
+.category-card.active {
+    border: 3px solid var(--orange);
+}
+
+/*! =======    left side of the card   ========   */
+.category-card.active .category-card-left {
+    width: 40%;
+}
+
+.category-card.active img {
+    border-radius: 17px 0 0 17px;
+}
+
+.category-card.active .category-title {
+    font-size: 22px;
+}
+
+/*! ===========================    right side of the card  =======================   */
+.category-card.active .category-card-right {
+    width: 60%;
+    /* enable back the buttons when the card is expanded*/
+    pointer-events: all;
+}
+
+.category-card.active .quantity-options,
+.category-card.active .difficulty-options,
+.category-card.active .options-title,
+.category-card.active button {
+    opacity: 1;
+    transition: opacity 0.77s ease-in, transform 0.2s;
+}
+
+/*?  =========  category button at the bottom   ===============*/
+.add-category-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    -webkit-text-stroke-width: 0.6px;
+    -webkit-text-stroke-color: rgb(255, 103, 2);
+
+    text-shadow: 1px 1px 1px rgb(34, 0, 128),
+        1px 2px 3px rgb(255, 103, 2),
+        1px 3px 3px rgb(34, 0, 128),
+        1px 4px 3px rgb(255, 103, 2),
+        1px 5px 3px rgb(34, 0, 128),
+        1px 6px 3px rgb(255, 103, 2),
+        1px 7px 3px rgb(34, 0, 128),
+        1px 8px 8px rgb(255, 103, 2);
+    font-size: 35px;
+    position: relative;
+    margin-bottom: 50px;
+
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+/*? ===================      smaller screens     ========================= */
+@media screen and (max-width:450px) {
+    .category-card {
+        width: 90%;
+        height: 12.7rem;
+    }
+
+    .category-title {
+        font-size: 1.55rem;
+    }
+
+    .category-card.active .category-title {
+        opacity: 0;
+    }
+
+    .category-card.active .category-card-left {
+        width: 0%;
+    }
+
+    .category-card.active .category-card-right {
+        width: 100%;
+        border-radius: 17px;
+    }
+
+    .options-title {
+        font-size: 23px;
+        margin-top: 10px;
+    }
+
+    .difficulty-options,
+    .quantity-options {
+        margin-top: 1px;
+        font-size: 16px;
+    }
+
+    .category-card.active .quantity-options,
+    .category-card.active .difficulty-options,
+    .category-card.active .options-title,
+    .category-card.active button {
+        transition: opacity 0.9s, transform 0.2s;
+    }
+
+    .category-card-right button {
+        margin-top: 10px;
+    }
+
+}
